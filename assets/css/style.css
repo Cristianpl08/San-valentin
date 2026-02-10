@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css?family=Sacramento");
+
+#card {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  #card {
+    width: 90%; /* Reducir el ancho para dispositivos móviles */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    margin: 2em auto; /* Ajustar el margen */
+    position: static; /* Cambiar la posición a estática para que no sea fija */
+    visibility: none; /* Hacer que el elemento sea visible */
+    top: 50px;
+  }
+
+  .side.side.one {
+    display: none;
+  }
+
+  #card p {
+    padding-left: 0 !important; /* Eliminar el relleno a la izquierda en dispositivos móviles */
+    padding-right: 0 !important; /* Eliminar el relleno a la derecha en dispositivos móviles */
+    font-size: 1.3em !important;
+  }
+
+  .valentines-day {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mensaje para rotar el dispositivo - solo en móvil vertical */
+#rotate-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f1e3d3;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate-content {
+  text-align: center;
+  color: #e01911;
+  font-size: 1.5em;
+}
+
+.rotate-content i {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.rotate-icon {
+  font-size: 3em;
+  margin-top: 20px;
+  animation: rotateAnimation 2s infinite;
+}
+
+@keyframes rotateAnimation {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+}
+
+/* Mostrar mensaje solo en móvil en modo vertical */
+@media only screen and (max-width: 900px) and (orientation: portrait) {
+  #rotate-message {
+    display: flex;
+  }
+  
+  .valentines-day,
+  #card {
+    display: none !important;
+  }
+}
+
+/* Estilos para móvil en horizontal */
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+  #rotate-message {
+    display: none;
+  }
+
+  #card {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  .side {
+    height: 80vh;
+    width: 40vw;
+    padding: 15px;
+  }
+
+  .side.one {
+    width: 30vw;
+  }
+
+  #card h2 {
+    font-size: 2em;
+    margin: 5px 0;
+  }
+
+  #card p {
+    font-size: 1em;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 8px 0;
+  }
+
+  .valentines-day {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+
+  .heart-image-container {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .heart-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+#card h2 {
+  font-size: 2.5em;
+  margin: 0;
+  color: pink;
+  text-align: center;
+}
+
+#card p {
+  font-size: 1.3em;
+  text-align: justify;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px 0;
+}
+
+.side {
+  background: #eee;
+  height: 70vh;
+  width: 35vw;
+  padding: 20px;
+  max-width: 500px;
+  max-height: 600px;
+}
+
+.side.one {
+  width: 28vw;
+  max-width: 350px;
+  transform: skew(10deg, 20deg);
+  background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.side.two {
+  transform: skew(10deg, -15deg);
+  background: linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Sacramento", cursive;
+  background-color: #f1e3d3;
+  overflow: hidden;
+}
+
+.valentines-day {
+  position: relative;
+  cursor: pointer;
+}
+
+.envelope {
+  position: relative;
+  filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.3));
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  width: 254px;
+  height: 254px;
+  background-color: #ff9494;
+  transform: rotate(-45deg);
+  border-radius: 0 15px 0 0;
+  left: -37px;
+  top: -82px;
+}
+
+.envelope:after {
+  content: "";
+  position: absolute;
+  background-color: #ff9494;
+  width: 360px;
+  height: 225px;
+  left: -90px;
+  top: 45px;
+}
+
+.heart {
+  position: relative;
+  background-color: #e01911;
+  display: inline-block;
+  height: 180px;
+  top: 50px;
+  left: 0;
+  transform: rotate(-45deg);
+  width: 180px;
+  filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, 0.3));
+  transition: 0.5s;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #e01911;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  position: absolute;
+}
+
+.heart:before {
+  top: -100px;
+  left: 0;
+}
+
+.heart:after {
+  left: 100px;
+  top: 0;
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top: 44px;
+  left: 80px;
+  z-index: 4;
+}
+
+.front:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top: -113px;
+  left: -170px;
+}
+
+.front:after {
+  width: 0;
+  height: 0;
+  position: absolute;
+  content: "";
+  border-bottom: 150px solid #fce7e9;
+  border-right: 180px solid transparent;
+  border-left: 180px solid transparent;
+  top: -36px;
+  left: -170px;
+}
+
+.text {
+  position: absolute;
+  font-family: arial;
+  letter-spacing: 3.5px;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  top: 80px;
+  left: 15px;
+  transition: 0.5s;
+}
+
+.valentines-day:hover .heart {
+  transform: translateY(-50px) rotate(-45deg);
+}
+
+.valentines-day:hover .text {
+  transform: translateY(-50px);
+}
+
+.heart-image-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  animation: pulseHeart 1s ease-in-out infinite alternate;
+  cursor: default;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  border: 5px solid #ff6b6b;
+}
+
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
