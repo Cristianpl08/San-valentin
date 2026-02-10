@@ -3,7 +3,8 @@ $(document).ready(function () {
     $('.left-curtain').css('width', '0%');
     $('.right-curtain').css('width', '0%');
 
-    $('.valentines-day').click(function () {
+    // Función para abrir la carta
+    function openCard() {
         // Animación de desvanecimiento de los elementos del sobre
         $('.envelope').css({ 'animation': 'fall 3s linear 1', '-webkit-animation': 'fall 3s linear 1' });
         $('.envelope').fadeOut(800, function () {
@@ -19,5 +20,11 @@ $(document).ready(function () {
                 }
             }); // Animación de ondulación
         });
+    }
+
+    // Soporte para click y touch
+    $('.valentines-day').on('click touchstart', function (e) {
+        e.preventDefault();
+        openCard();
     });
 }); 
